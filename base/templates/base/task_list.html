@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}TODO list page{% endblock %}
+
+{% block body %}
+    <div>
+        {% for task in tasks %}
+            <h3>{{ task.title }}</h3>
+            <span><a href="{% url 'base:task' task.id %}">Some text</a></span>
+            {{ task.complete }}
+        {% empty %}
+            <p>Tasks do not exist.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
