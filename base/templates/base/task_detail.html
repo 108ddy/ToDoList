@@ -5,6 +5,8 @@
 {% block body %}
     <div>
         <h1>Task: {{ task.title }} ({{ task.complete }})</h1>
+        <span><a href="{% url 'base:update' task.id %}">Update</a></span>
+        <span><a href="{% url 'base:delete' task.id %}">Delete</a></span>
         <p>Description: {{ task.description }}</p>
         <p>By user: {{ task.user }}</p>
         <p>Created: {{ task.created }}</p>

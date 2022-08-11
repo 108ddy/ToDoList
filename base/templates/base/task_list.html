@@ -3,11 +3,14 @@
 {% block title %}TODO list page{% endblock %}
 
 {% block body %}
+    <a href="{% url 'base:create' %}">Create another Task.</a>
+
     <div>
         {% for task in tasks %}
-            <h3>{{ task.title }}</h3>
-            <span><a href="{% url 'base:task' task.id %}">Some text</a></span>
-            {{ task.complete }}
+            <h3>{{ task.title }} ({{ task.complete }})</h3>
+            <span><a href="{% url 'base:task' task.id %}">View</a></span>
+            <span><a href="{% url 'base:update' task.id %}">Update</a></span>
+            <span><a href="{% url 'base:delete' task.id %}">Delete</a></span>
         {% empty %}
             <p>Tasks do not exist.</p>
         {% endfor %}
