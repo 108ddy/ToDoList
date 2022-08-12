@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block body %}
+    <h2>Now you're logged out from your account.</h2>
+
+    <a href="{% url 'base:login' %}">Click this text to go to Login page.</a>
+{% endblock %}

@@ -122,6 +122,13 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Auth
+
+LOGIN_URL = 'base:login'
+
+LOGIN_REDIRECT_URL = 'base:tasks'
+
+REDIRECT_FIELD_NAME = None
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
