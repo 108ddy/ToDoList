@@ -23,6 +23,12 @@ class TaskList(CustomLoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
+        search = self.request.GET.get('search') or ''
+
+        if search:
+            context['tasks'] = context['tasks'].filter(title__icontains=search)
+
+        context['search'] = search
 
         return context
 
