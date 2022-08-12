@@ -8,4 +8,9 @@
         {{ form.as_p }}
         <input type="submit" value="Log in">
     </form>
+
+    <p>
+        You don't have any account? Not a problem!
+        <a href="{% url 'base:registration' %}">Click on this link and go to Registration page!</a>
+    </p>
 {% endblock %}
