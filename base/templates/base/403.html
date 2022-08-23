@@ -2,7 +2,12 @@
 
 {% block title %}403 page{% endblock %}
 
-{% block body %}
-    <h1>Page 403. Access is forbidden.</h1>
-    <p><a href="{% url 'base:tasks' %}">Click on this link and return to main page!</a></p>
+{% block content %}
+    <div class="container__error">
+        <h1>Page 403. Access is forbidden.</h1>
+
+        <p>
+            <a class="container__redirect-link" href="{% url 'base:tasks' %}">Click on this link and return to main page!</a>
+        </p>
+    </div>
 {% endblock %}

@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Update Task: {{ task.id }}{% endblock %}
+{% block title %}Update Task: {{ task.title }}{% endblock %}
 
-{% block body %}
-    <form method="POST">
+{% block content %}
+    <form method="POST" class="container__form-operation">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.as_div }}
         <input type="submit" value="submit">
     </form>
 
-    <a href="{% url 'base:tasks' %}">Back to main page.</a>
-    <a href="{% url 'base:task' task.id %}">Back to Task: {{ task.id }}.</a>
+
+    <div class="container__back-to-task">
+        <a href="{% url 'base:task' task.id %}">
+            <i class="bi bi-arrow-return-left"> Task: {{ task.title }}</i>
+        </a>
+    </div>
+    <div class="container__back-to-main-page">
+        <a href="{% url 'base:tasks' %}">
+            <i class="bi bi-arrow-left"> Main page</i>
+        </a>
+    </div>
 {% endblock %}

@@ -2,20 +2,50 @@
 
 {% block title %}TODO list page{% endblock %}
 
-{% block body %}
-    <a href="{% url 'base:create' %}">Create another Task.</a>
+{% block content %}
+    <div class="container__header">
+        <div class="container__greetings">
+            <h1>Greetings, {{ request.user }}!</h1>
+            <a class="container__logout" href="{% url 'base:logout' %}">Wanna <b>Logout</b>?</a>
+        </div>
 
-    <form method="GET">
-        <input type="text" name="search" value="{{ search }}">
-        <input type="submit" value="Search">
-    </form>
+        <div class="container__wrapper">
+            <div class="container__search">
+                <form method="GET" class="container__search-form">
+                    <input type="text" name="search" value="{{ search }}" class="container__search-input">
+                    <button type="submit" class="container__search-submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="container__create-task">
+                <a href="{% url 'base:create' %}" class="container__create-link create">
+                    <i class="bi bi-plus-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <div>
+    <div class="container__task-list">
         {% for task in tasks %}
-            <h3>{{ task.title }} ({{ task.complete }})</h3>
-            <span><a href="{% url 'base:task' task.id %}">View</a></span>
-            <span><a href="{% url 'base:update' task.id %}">Update</a></span>
-            <span><a href="{% url 'base:delete' task.id %}">Delete</a></span>
+            <div class="container__task-item">
+                <div class="container__task-title">
+                    <a
+                        href="{% url 'base:task' task.id %}"
+                        class="
+                            container__task-link view
+                            {% if task.complete %}
+                                done
+                            {% endif %}
+                        "
+                    >{{ task.title }}</a>
+                </div>
+
+                <div class="container__task-operations">
+                    <a href="{% url 'base:update' task.id %}" class="container__task-operation update"><i class="bi bi-pencil-fill"></i></a>
+                    <a href="{% url 'base:delete' task.id %}" class="container__task-operation delete"><i class="bi bi-x-lg"></i></a>
+                </div>
+            </div>
         {% empty %}
             <p>Tasks do not exist.</p>
         {% endfor %}

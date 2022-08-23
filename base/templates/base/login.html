@@ -2,15 +2,17 @@
 
 {% block title %}Login{% endblock %}
 
-{% block body %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Log in">
-    </form>
+{% block content %}
+    <div class="container__form-auth">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Log in">
+        </form>
 
-    <p>
-        You don't have any account? Not a problem!
-        <a href="{% url 'base:registration' %}">Click on this link and go to Registration page!</a>
-    </p>
+        <p class="container__auth-link">
+            You don't have any account? Not a problem!
+            <a href="{% url 'base:registration' %}">Click on this link and go to Registration page!</a>
+        </p>
+    </div>
 {% endblock %}

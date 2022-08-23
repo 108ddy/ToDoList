@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}TaskID: {{ task.id }}{% endblock %}
+{% block title %}{{ task.title }}{% endblock %}
 
-{% block body %}
-    <div>
-        <h1>Task: {{ task.title }} ({{ task.complete }})</h1>
-        <span><a href="{% url 'base:update' task.id %}">Update</a></span>
-        <span><a href="{% url 'base:delete' task.id %}">Delete</a></span>
-        <p>Description: {{ task.description }}</p>
-        <p>By user: {{ task.user }}</p>
-        <p>Created: {{ task.created }}</p>
-
-        <a href="{% url 'base:tasks' %}">Back to main page.</a>
+{% block content %}
+    <div class="container__task-detail">
+        <div class="container__title-header">
+            <div class="container__title">
+                <h1>Task: {{ task.title }}</h1>
+                {% if task.complete %}
+                    <i class="bi bi-check"></i>
+                {% endif %}
+            </div>
+            <div class="container__task-operations">
+                <a href="{% url 'base:update' task.id %}" class="container__task-operation update"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'base:delete' task.id %}" class="container__task-operation delete"><i class="bi bi-x-lg"></i></a>
+            </div>
+        </div>
+        <div class="container__information">
+            <p class="container__task-description">Description:<br>{{ task.description }}</p>
+            <p class="container__task-user">By user: {{ task.user }}</p>
+            <p class="container__task-date">Created: {{ task.created }}</p>
+        </div>
+        <div class="container__back-to-main-page">
+            <a href="{% url 'base:tasks' %}">
+                <i class="bi bi-arrow-left"> Main page</i>
+            </a>
+        </div>
     </div>
 {% endblock %}
