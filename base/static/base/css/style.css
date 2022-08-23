@@ -218,11 +218,15 @@ textarea {
     padding: 0 10px
 }
 
-.container__information .container__task-description,
-.container__information .container__task-created-by {
+.container__task-description,
+.container__task-created-by {
     font-size: 20px;
     padding: 15px 5px;
     border-bottom: 1px solid var(--black);
+}
+
+.container__task-description:first-letter {
+    margin-left: 35px;
 }
 
 .container__task-created-by {
