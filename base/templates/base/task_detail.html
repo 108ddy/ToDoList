@@ -6,7 +6,7 @@
     <div class="container__task-detail">
         <div class="container__title-header">
             <div class="container__title">
-                <h1>Task: {{ task.title }}</h1>
+                <h1>{{ task.title }}</h1>
                 {% if task.complete %}
                     <i class="bi bi-check"></i>
                 {% endif %}
@@ -17,9 +17,11 @@
             </div>
         </div>
         <div class="container__information">
-            <p class="container__task-description">Description:<br>{{ task.description }}</p>
-            <p class="container__task-user">By user: {{ task.user }}</p>
-            <p class="container__task-date">Created: {{ task.created }}</p>
+            <p class="container__task-description">{{ task.description }}</p>
+            <div class="container__task-created-by">
+                <p class="container__task-user">By {{ task.user }}</p>
+                <p class="container__task-date">{{ task.created }}</p>
+            </div>
         </div>
         <div class="container__back-to-main-page">
             <a href="{% url 'base:tasks' %}">

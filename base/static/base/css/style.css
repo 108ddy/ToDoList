@@ -218,10 +218,16 @@ textarea {
     padding: 0 10px
 }
 
-.container__information p {
+.container__information .container__task-description,
+.container__information .container__task-created-by {
     font-size: 20px;
     padding: 15px 5px;
     border-bottom: 1px solid var(--black);
+}
+
+.container__task-created-by {
+    display: flex;
+    justify-content: space-between;
 }
 
 .container__task-description {
