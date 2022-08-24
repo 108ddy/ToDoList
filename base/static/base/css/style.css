@@ -236,6 +236,7 @@ textarea {
 
 .container__task-description {
     text-align: justify;
+    word-break: break-all;
 }
 
 .container__back-to-main-page a,
